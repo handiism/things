@@ -1,0 +1,16 @@
+# https://taskfile.dev
+
+version: "3"
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  mg-up:
+    dotenv: [".env"]
+    cmds:
+      - migrate -path db/migration -database $POSTGRES_URL --verbose up
+  mg-down:
+    dotenv: [".env"]
+    cmds:
+      - migrate -path db/migration -database $POSTGRES_URL --verbose down
