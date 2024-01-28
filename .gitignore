@@ -22,3 +22,7 @@ go.work
 
 # Air temporary build folder
 tmp/
+
+
+# Environment files
+.env
