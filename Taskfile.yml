@@ -6,6 +6,11 @@ vars:
   GREETING: Hello, World!
 
 tasks:
+  mg-create:
+    dotenv:
+      - ".env"
+    cmd: migrate create -ext sql -dir db/migration -seq {{.CLI_ARGS}}
+
   mg-up:
     dotenv: [".env"]
     cmds:
@@ -14,6 +19,13 @@ tasks:
     dotenv: [".env"]
     cmds:
       - migrate -path db/migration -database $POSTGRES_URL --verbose down
+
+  seed:
+    cmd: go run cmd/seed/main.go
+
+  migrate:
+    cmd: go run cmd/migrate/main.go
+
   build:
     cmds:
       - sqlc generate
