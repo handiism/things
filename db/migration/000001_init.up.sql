@@ -44,7 +44,7 @@ ALTER TABLE
 ALTER TABLE
     "role_ability"
     ADD
-        CONSTRAINT uq_role_ability UNIQUE("role_id","ability_id");
+        CONSTRAINT uq_role_ability UNIQUE ("role_id", "ability_id");
 
 
 ALTER TABLE

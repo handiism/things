@@ -25,7 +25,10 @@ WHERE "email" = $1;
 
 -- name: UpdateCredential :exec
 UPDATE "credential"
-SET "name" = $2 , "email" = $2 , "username" = $3 , "role_id" = $4
+SET "name"     = $2,
+    "email"    = $2,
+    "username" = $3,
+    "role_id"  = $4
 WHERE "id" = $1;
 
 -- name: DeleteCredential :exec
