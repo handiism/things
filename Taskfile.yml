@@ -14,3 +14,11 @@ tasks:
     dotenv: [".env"]
     cmds:
       - migrate -path db/migration -database $POSTGRES_URL --verbose down
+  build:
+    cmds:
+      - sqlc generate
+      - go build
+  dev:
+    cmds:
+      - sqlc generate
+      - air .
