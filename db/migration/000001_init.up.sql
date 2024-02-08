@@ -2,7 +2,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TYPE "role_enum" AS ENUM ('admin');
 
-CREATE TYPE "ability_enum" AS ENUM ('create_credential','delete_credential','update_credential','get_credential');
+CREATE TYPE "ability_enum" AS ENUM ('credential_create','credential_read','credential_update','credential_delete');
 
 CREATE TABLE IF NOT EXISTS "credential"
 (
