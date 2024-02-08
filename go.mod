@@ -8,7 +8,6 @@ require (
 	github.com/invopop/validation v0.3.0
 	github.com/jackc/pgx/v5 v5.5.2
 	github.com/rs/zerolog v1.31.0
-	github.com/samber/lo v1.39.0
 	github.com/spf13/viper v1.18.2
 )
 
