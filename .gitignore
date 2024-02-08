@@ -26,3 +26,6 @@ tmp/
 
 # Environment files
 .env
+
+# Go generate files
+db/sqlc/
