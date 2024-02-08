@@ -36,6 +36,13 @@ func (s *Server) setupRouter() {
 	ability.Put("/:id", s.updateAbility())
 	ability.Delete("/:id", s.deleteAbility())
 
+	role := router.Group("/role")
+
+	role.Post("/", s.createRole())
+	role.Get("/", s.getRoles())
+	role.Put("/:id", s.updateRole())
+	role.Delete("/:id", s.deleteRole())
+
 	s.router = router
 }
 
