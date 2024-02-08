@@ -1,0 +1,1 @@
+ALTER TYPE "role_enum" ADD VALUE 'user';
