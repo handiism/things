@@ -10,6 +10,7 @@ import (
 type Server struct {
 	config  util.Config
 	queries *sqlc.Queries
+	pool    *pgxpool.Pool
 	router  *gin.Engine
 }
 
@@ -17,6 +18,7 @@ func NewServer(config util.Config, pool *pgxpool.Pool) (*Server, error) {
 	queries := sqlc.New(pool)
 	server := &Server{
 		config:  config,
+		pool:    pool,
 		queries: queries,
 	}
 
@@ -26,6 +28,11 @@ func NewServer(config util.Config, pool *pgxpool.Pool) (*Server, error) {
 
 func (s *Server) setupRouter() {
 	router := gin.Default()
+
+	ability := router.Group("/ability")
+
+	ability.GET("/", s.getAbilities())
+
 	s.router = router
 }
 

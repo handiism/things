@@ -39,10 +39,10 @@ func seedDatabase(pool *pgxpool.Pool) error {
 	queries := sqlc.New(pool)
 
 	abilityEnums := []sqlc.AbilityEnum{
-		sqlc.AbilityEnumCreateCredential,
-		sqlc.AbilityEnumDeleteCredential,
-		sqlc.AbilityEnumUpdateCredential,
-		sqlc.AbilityEnumGetCredential,
+		sqlc.AbilityEnumCredentialCreate,
+		sqlc.AbilityEnumCredentialRead,
+		sqlc.AbilityEnumCredentialUpdate,
+		sqlc.AbilityEnumCredentialDelete,
 	}
 
 	abilities := []sqlc.Ability{}
