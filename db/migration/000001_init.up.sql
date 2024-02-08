@@ -50,8 +50,7 @@ ALTER TABLE
 ALTER TABLE
     "role_ability"
     ADD
-        CONSTRAINT fk_role_in_role_ability FOREIGN KEY ("role_id") REFERENCES "role" ("id")
-;
+        CONSTRAINT fk_role_in_role_ability FOREIGN KEY ("role_id") REFERENCES "role" ("id");
 
 ALTER TABLE
     "role_ability"

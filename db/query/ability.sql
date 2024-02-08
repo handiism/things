@@ -22,10 +22,11 @@ VALUES ($1)
 ON CONFLICT ("name") DO UPDATE SET "name" = $1
 RETURNING *;
 
--- name: UpdateAbility :exec
+-- name: UpdateAbility :one
 UPDATE "ability"
 SET "name" = $2
-WHERE "id" = $1;
+WHERE "id" = $1
+RETURNING *;
 
 -- name: DeleteAbility :exec
 DELETE

@@ -31,7 +31,6 @@ func main() {
 	}
 
 	migrateDatabase(cfg.MigrationPath, cfg.PostgresURL)
-	seedDatabase(pool)
 	runHttpServer(cfg, pool)
 }
 
