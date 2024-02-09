@@ -33,13 +33,14 @@ SELECT *
 FROM "credential"
 WHERE "email" = $1;
 
--- name: UpdateCredential :exec
+-- name: UpdateCredential :one
 UPDATE "credential"
-SET "name"     = $2,
-    "email"    = $2,
-    "username" = $3,
-    "role_id"  = $4
-WHERE "id" = $1;
+SET "name"     = coalesce(sqlc.narg('name'), name),
+    "email"    = coalesce(sqlc.narg('email'), email),
+    "username" = coalesce(sqlc.narg('username'), username),
+    "role_id"  = coalesce(sqlc.narg('role_id'), role_id)
+WHERE "id" = sqlc.arg('id')
+RETURNING *;
 
 -- name: DeleteCredential :exec
 DELETE

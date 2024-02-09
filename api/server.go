@@ -49,6 +49,7 @@ func (s *Server) setupRouter() {
 	credential := router.Group("/credential")
 
 	credential.Put("/picture", s.verify(), s.setPicture())
+	credential.Put("/profile", s.verify(), s.updateProfile())
 
 	s.router = router
 }
