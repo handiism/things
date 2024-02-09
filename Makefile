@@ -1,4 +1,6 @@
-include .env
+ifneq ("$(wildcard .env)","")
+	include .env
+endif
 
 mg-create:
 	@migrate create -ext sql -dir db/migration -seq $(name)
@@ -16,8 +18,15 @@ migrate:
 	@go run cmd/migrate/main.go
 
 build:
+	@migrate -path db/migration -database $(POSTGRES_URL) --verbose up
 	@sqlc generate
 	@go build
+
+start:
+	@migrate -path db/migration -database $(POSTGRES_URL) --verbose up
+	@sqlc generate
+	@go build
+	@./smi
 
 dev:
 	@sqlc generate
