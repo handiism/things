@@ -3,7 +3,7 @@ package api
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofrs/uuid"
-	"github.com/handiism/smi/db/sqlc"
+	"github.com/handiism/things/db/sqlc"
 	"github.com/jackc/pgx/v5/pgtype"
 	"github.com/minio/minio-go"
 )

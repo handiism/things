@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/handiism/smi/db/sqlc"
+	"github.com/handiism/things/db/sqlc"
 	"github.com/invopop/validation"
 )
 

@@ -29,7 +29,7 @@ start:
 	@migrate -path db/migration -database $(POSTGRES_URL) --verbose up
 	@sqlc generate
 	@go build
-	@./smi
+	@./things
 
 dev:
 	@sqlc generate

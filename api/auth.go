@@ -8,7 +8,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofrs/uuid"
 	"github.com/golang-jwt/jwt/v5"
-	"github.com/handiism/smi/db/sqlc"
+	"github.com/handiism/things/db/sqlc"
 	"github.com/invopop/validation"
 	"github.com/invopop/validation/is"
 	"golang.org/x/crypto/bcrypt"

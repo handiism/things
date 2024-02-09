@@ -1,4 +1,4 @@
-module github.com/handiism/smi
+module github.com/handiism/things
 
 go 1.21.4
 

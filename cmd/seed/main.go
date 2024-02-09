@@ -4,8 +4,8 @@ import (
 	"context"
 	"os"
 
-	"github.com/handiism/smi/db/sqlc"
-	"github.com/handiism/smi/util"
+	"github.com/handiism/things/db/sqlc"
+	"github.com/handiism/things/util"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
