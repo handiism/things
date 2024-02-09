@@ -117,6 +117,22 @@ func (s *Server) login() fiber.Handler {
 
 func (s *Server) me() fiber.Handler {
 	return func(c *fiber.Ctx) error {
+		id := c.Get("CredentialID", "")
+		if id == "" {
+			return c.Status(404).JSON(map[string]any{"error": "id not found"})
+		}
+
+		credential, err := s.queries.GetCredentialById(c.Context(), uuid.FromStringOrNil(id))
+		if err != nil {
+			return c.Status(404).JSON(map[string]any{"error": err.Error()})
+		}
+
+		return c.Status(200).JSON(map[string]any{"status": "success", "credential": credential})
+	}
+}
+
+func (s *Server) verify() fiber.Handler {
+	return func(c *fiber.Ctx) error {
 		headers := c.GetReqHeaders()
 		auths := headers["Authorization"]
 		if len(auths) == 0 {
@@ -137,14 +153,9 @@ func (s *Server) me() fiber.Handler {
 		claims, ok := token.Claims.(*JwtClaims)
 		if !ok {
 			return c.Status(400).JSON(map[string]any{"error": err.Error()})
-
 		}
 
-		credential, err := s.queries.GetCredentialById(c.Context(), claims.CredentialID)
-		if err != nil {
-			return c.Status(404).JSON(map[string]any{"error": err.Error()})
-		}
-
-		return c.Status(200).JSON(map[string]any{"status": "success", "credential": credential})
+		c.Locals("CredentialID", claims.CredentialID.String())
+		return c.Next()
 	}
 }

@@ -1,0 +1,1 @@
+ALTER TABLE "credential" RENAME COLUMN "picture" TO "photo";

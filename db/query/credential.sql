@@ -22,6 +22,12 @@ SELECT "password"
 FROM "credential"
 WHERE "email" = $1;
 
+-- name: SetPictureByCredentialId :one
+UPDATE "credential"
+SET "picture" = $2
+WHERE "id" = $1
+RETURNING *;
+
 -- name: GetCredentialByEmail :one
 SELECT *
 FROM "credential"

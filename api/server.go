@@ -44,7 +44,11 @@ func (s *Server) setupRouter() {
 	auth := router.Group("/auth")
 	auth.Post("/login", s.login())
 	auth.Post("/register", s.register())
-	auth.Get("/me", s.me())
+	auth.Get("/me", s.verify(), s.me())
+
+	credential := router.Group("/credential")
+
+	credential.Put("/picture", s.verify(), s.setPicture())
 
 	s.router = router
 }
