@@ -1,6 +1,6 @@
 -- name: CreateCredential :one
-INSERT INTO "credential"("email", "password")
-VALUES ($1, $2)
+INSERT INTO "credential"("email", "password", "role_id")
+VALUES ($1, $2, $3)
 RETURNING *;
 
 -- name: GetCredentials :many
@@ -8,15 +8,19 @@ SELECT *
 FROM "credential";
 
 -- name: GetCredentialById :one
-SELECT sqlc.embed(credential), sqlc.embed(role)
+SELECT *
 FROM "credential"
-         JOIN "role" ON "credential"."id" = "role"."id"
 WHERE "credential"."id" = $1;
 
 -- name: GetCredentialByUsername :one
 SELECT *
 FROM "credential"
 WHERE "username" = $1;
+
+-- name: GetCredentialPasswordByEmail :one
+SELECT "password"
+FROM "credential"
+WHERE "email" = $1;
 
 -- name: GetCredentialByEmail :one
 SELECT *
