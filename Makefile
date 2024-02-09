@@ -17,6 +17,9 @@ seed:
 migrate:
 	@go run cmd/migrate/main.go
 
+sqlc:
+	@sqlc generate
+
 build:
 	@migrate -path db/migration -database $(POSTGRES_URL) --verbose up
 	@sqlc generate
