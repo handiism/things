@@ -14,14 +14,14 @@ RETURNING *;
 SELECT *
 FROM "role_ability";
 
--- name: UpdateRoleAbility :exec
+-- name: UpdateRoleAbility :execresult
 UPDATE "role_ability"
 SET "role_id"    = $2,
     "ability_id" = $3
 WHERE "id" = $1;
 
 
--- name: DeleteRoleAbility :exec
+-- name: DeleteRoleAbilitiesByRoleId :execresult
 DELETE
 FROM "role_ability"
-WHERE "id" = $1;
+WHERE "role_id" = $1;

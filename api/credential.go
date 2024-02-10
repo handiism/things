@@ -16,7 +16,7 @@ import (
 	"github.com/minio/minio-go"
 )
 
-func (s *Server) setPicture() fiber.Handler {
+func (s *Server) setPictureCredential() fiber.Handler {
 	return func(c *fiber.Ctx) error {
 		credentialID := c.Locals("CredentialID").(string)
 
@@ -74,7 +74,7 @@ func (u *updateProfileRequest) validate() error {
 	)
 }
 
-func (s *Server) updateProfile() fiber.Handler {
+func (s *Server) updateProfileCredential() fiber.Handler {
 	return func(c *fiber.Ctx) error {
 		credentialID := c.Locals("CredentialID").(string)
 		var req updateProfileRequest

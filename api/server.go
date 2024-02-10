@@ -39,6 +39,7 @@ func (s *Server) setupRouter() {
 	role.Post("/", s.createRole())
 	role.Get("/", s.getRoles())
 	role.Put("/:id", s.updateRole())
+	role.Put("/:id/abilities", s.setAbilities())
 	role.Delete("/:id", s.deleteRole())
 
 	auth := router.Group("/auth")
@@ -48,8 +49,8 @@ func (s *Server) setupRouter() {
 
 	credential := router.Group("/credential")
 
-	credential.Put("/picture", s.verify(), s.setPicture())
-	credential.Put("/profile", s.verify(), s.updateProfile())
+	credential.Put("/picture", s.verify(), s.setPictureCredential())
+	credential.Put("/profile", s.verify(), s.updateProfileCredential())
 
 	s.router = router
 }

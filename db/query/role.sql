@@ -29,6 +29,13 @@ SET "name" = $2
 WHERE "id" = $1
 RETURNING *;
 
+-- name: SetRoleAbilities :many
+INSERT INTO role_ability (role_id, ability_id)
+SELECT sqlc.arg('role_id')::int as role_id, id as ability_id
+FROM ability
+WHERE name = ANY (sqlc.arg('role_abilities')::text[]::ability_enum[])
+RETURNING *;
+
 -- name: DeleteRole :exec
 DELETE
 FROM "role"
